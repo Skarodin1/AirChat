@@ -1,0 +1,87 @@
+﻿.reg-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+}
+
+.reg-card {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reg-logo {
+    margin-bottom: 15px;
+}
+
+.reg-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 16px;
+}
+
+.reg-subtitle {
+    font-size: 1.15rem;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.reg-desc {
+    font-size: 1rem;
+    color: #888;
+    margin-top: 3px;
+}
+
+.reg-input {
+    width: 100%;
+    margin-bottom: 13px;
+    padding: 12px 16px;
+    border-radius: 7px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    background: #fafafa;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+    .reg-input:focus {
+        border-color: #a259ff;
+    }
+
+.reg-btn {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 7px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.reg-btn-main {
+    background: #111;
+    color: #fff;
+}
+
+    .reg-btn-main:hover {
+        background: #333;
+    }
+
+.reg-btn-secondary {
+    background: #ededed;
+    color: #444;
+    cursor: not-allowed;
+}
+.reg-error {
+    color: #e33;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    text-align: center;
+}
