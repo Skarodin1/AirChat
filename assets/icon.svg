@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Фон -->
+  <rect width="512" height="512" rx="80" fill="#007bff"/>
+  
+  <!-- Облако (символизирует AirChat) -->
+  <path d="M 150 220 Q 150 180 190 180 Q 210 160 250 160 Q 290 160 310 180 Q 350 180 350 220 Q 380 220 380 250 Q 380 280 350 280 L 180 280 Q 150 280 150 250 Q 150 220 150 220" fill="white"/>
+  
+  <!-- Микрофон -->
+  <rect x="230" y="320" width="52" height="80" rx="26" fill="white"/>
+  <rect x="240" y="330" width="32" height="60" rx="16" fill="#007bff"/>
+  
+  <!-- Основание микрофона -->
+  <rect x="248" y="400" width="16" height="30" fill="white"/>
+  <rect x="220" y="425" width="72" height="8" rx="4" fill="white"/>
+  
+  <!-- Звуковые волны -->
+  <path d="M 180 340 Q 160 360 160 380 Q 160 400 180 420" stroke="white" stroke-width="8" fill="none"/>
+  <path d="M 332 340 Q 352 360 352 380 Q 352 400 332 420" stroke="white" stroke-width="8" fill="none"/>
+  
+  <!-- Центральная точка в облаке -->
+  <circle cx="256" cy="230" r="8" fill="#007bff"/>
+</svg> 

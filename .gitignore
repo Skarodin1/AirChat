@@ -1,0 +1,59 @@
+# Скомпилированные приложения и установщики
+out/
+dist/
+
+# Большие бинарные файлы Electron (свыше 100MB)
+out/make/squirrel.windows/x64/*.exe
+out/make/squirrel.windows/x64/*.nupkg
+out/AirChat-win32-x64/AirChat.exe
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Go
+bin/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# База данных SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# Логи
+logs/
+*.log
+
+# Временные файлы
+.tmp/
+temp/
+*.tmp
+
+# Конфигурационные файлы IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Пользовательские данные
+userData/
+appData/
+
+# Сертификаты и ключи
+*.pem
+*.key
+*.crt
+*.p12
+
+# Переменные окружения
+.env
+.env.local 

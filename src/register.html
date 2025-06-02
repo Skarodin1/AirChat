@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AirChat - Регистрация</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .auth-container {
+        background: #ffffff;
+        padding: 60px 40px;
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+      }
+
+      .logo {
+        margin-bottom: 20px;
+      }
+
+      .logo svg {
+        width: 80px;
+        height: 80px;
+      }
+
+      .auth-header h1 {
+        color: #333333;
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+      }
+
+      .auth-section {
+        margin-bottom: 40px;
+      }
+
+      .section-title {
+        color: #333333;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .section-subtitle {
+        color: #666666;
+        font-size: 1rem;
+        margin-bottom: 30px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 16px 20px;
+        border: 1px solid #e1e5e9;
+        border-radius: 8px;
+        font-size: 1rem;
+        background: #ffffff;
+        color: #333333;
+        box-sizing: border-box;
+        transition: border-color 0.2s ease;
+      }
+
+      .form-group input::placeholder {
+        color: #999999;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      .form-group input.error {
+        border-color: #ff4757;
+      }
+
+      .error-message {
+        color: #ff4757;
+        font-size: 0.85rem;
+        margin-top: 5px;
+        text-align: left;
+        display: none;
+      }
+
+      .button-group {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 30px;
+      }
+
+      .auth-button {
+        width: 100%;
+        padding: 16px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .auth-button.primary {
+        background: #000000;
+        color: #ffffff;
+      }
+
+      .auth-button.primary:hover {
+        background: #333333;
+      }
+
+      .auth-button.secondary {
+        background: #e5e5e5;
+        color: #333333;
+      }
+
+      .auth-button.secondary:hover {
+        background: #d0d0d0;
+      }
+
+      .auth-button:disabled {
+        background: #cccccc;
+        color: #666666;
+        cursor: not-allowed;
+      }
+
+      /* Скрытые формы */
+      .hidden-form {
+        display: none !important;
+      }
+
+      /* Главная форма */
+      .main-form {
+        display: block;
+      }
+
+      /* Активные формы */
+      .hidden-form.active {
+        display: block !important;
+      }
+
+      /* Дополнительные поля для регистрации */
+      .registration-fields {
+        display: none;
+      }
+
+      .registration-fields.active {
+        display: block;
+      }
+
+      .password-strength {
+        margin-top: 8px;
+        height: 4px;
+        background: #e1e5e9;
+        border-radius: 2px;
+        overflow: hidden;
+        display: none;
+      }
+
+      .password-strength-bar {
+        height: 100%;
+        width: 0%;
+        transition: all 0.3s ease;
+      }
+
+      .strength-weak {
+        background: #ff4757;
+      }
+      .strength-medium {
+        background: #ffa502;
+      }
+      .strength-strong {
+        background: #2ed573;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="auth-container">
+      <!-- Логотип -->
+      <div class="logo">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Фиолетовый речевой пузырь -->
+          <path
+            d="M25 25 C25 15, 35 15, 45 15 L65 15 C75 15, 85 15, 85 25 L85 45 C85 55, 75 55, 65 55 L45 55 L35 65 L35 55 C25 55, 25 45, 25 35 Z"
+            fill="#8B5CF6"
+            stroke="none"
+          />
+
+          <!-- Синий речевой пузырь -->
+          <path
+            d="M35 35 C35 25, 45 25, 55 25 L75 25 C85 25, 95 25, 95 35 L95 55 C95 65, 85 65, 75 65 L55 65 L45 75 L45 65 C35 65, 35 55, 35 45 Z"
+            fill="#3B82F6"
+            stroke="none"
+          />
+
+          <!-- Линии внутри пузырей -->
+          <line
+            x1="35"
+            y1="35"
+            x2="75"
+            y2="35"
+            stroke="white"
+            stroke-width="3"
+            stroke-linecap="round"
+          />
+          <line
+            x1="35"
+            y1="42"
+            x2="65"
+            y2="42"
+            stroke="white"
+            stroke-width="3"
+            stroke-linecap="round"
+          />
+          <line
+            x1="35"
+            y1="49"
+            x2="70"
+            y2="49"
+            stroke="white"
+            stroke-width="3"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+
+      <!-- Заголовок -->
+      <div class="auth-header">
+        <h1>AirChat</h1>
+      </div>
+
+      <!-- Главная форма входа -->
+      <div id="login-form" class="main-form">
+        <div class="auth-section">
+          <div class="section-title">Вход в систему</div>
+          <div class="section-subtitle">Введите ваши данные</div>
+        </div>
+
+        <form id="loginForm">
+          <div class="form-group">
+            <input
+              type="text"
+              id="loginUsername"
+              placeholder="Имя пользователя"
+              required
+            />
+            <div class="error-message" id="loginUsernameError"></div>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Пароль"
+              required
+            />
+            <div class="error-message" id="loginPasswordError"></div>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="text"
+              id="loginServerIP"
+              placeholder="IP сервера"
+              required
+            />
+            <div class="error-message" id="loginServerIPError"></div>
+          </div>
+
+          <div class="button-group">
+            <button type="submit" class="auth-button primary">
+              Войти в чат
+            </button>
+            <button
+              type="button"
+              class="auth-button secondary"
+              onclick="showRegistrationForm()"
+            >
+              Зарегистрироваться
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Скрытая форма быстрого подключения -->
+      <div id="main-form" class="hidden-form">
+        <div class="auth-section">
+          <div class="section-title">Регистрация</div>
+          <div class="section-subtitle">Введите ваше имя и IP</div>
+        </div>
+
+        <form id="quickForm">
+          <div class="form-group">
+            <input type="text" id="userName" placeholder="Ваше имя" required />
+            <div class="error-message" id="userNameError"></div>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="text"
+              id="serverIP"
+              placeholder="Ваш IP (например 111.0.1.1)"
+              required
+            />
+            <div class="error-message" id="serverIPError"></div>
+          </div>
+
+          <div class="button-group">
+            <button
+              type="button"
+              class="auth-button primary"
+              onclick="createRoom()"
+            >
+              Создать комнату
+            </button>
+            <button
+              type="button"
+              class="auth-button secondary"
+              onclick="showLoginForm()"
+            >
+              Войти в чат
+            </button>
+            <button
+              type="button"
+              class="auth-button secondary"
+              onclick="showRegistrationForm()"
+            >
+              Зарегистрироваться
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Скрытая форма регистрации -->
+      <div id="register-form" class="hidden-form">
+        <div class="auth-section">
+          <div class="section-title">Регистрация</div>
+          <div class="section-subtitle">Создайте новый аккаунт</div>
+        </div>
+
+        <form id="registerForm">
+          <div class="form-group">
+            <input
+              type="text"
+              id="registerUsername"
+              placeholder="Имя пользователя"
+              required
+              minlength="3"
+              maxlength="20"
+            />
+            <div class="error-message" id="registerUsernameError"></div>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="email"
+              id="registerEmail"
+              placeholder="Email"
+              required
+            />
+            <div class="error-message" id="registerEmailError"></div>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="password"
+              id="registerPassword"
+              placeholder="Пароль"
+              required
+              minlength="6"
+            />
+            <div class="password-strength" id="passwordStrength">
+              <div class="password-strength-bar" id="passwordStrengthBar"></div>
+            </div>
+            <div class="error-message" id="registerPasswordError"></div>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="password"
+              id="confirmPassword"
+              placeholder="Подтвердите пароль"
+              required
+            />
+            <div class="error-message" id="confirmPasswordError"></div>
+          </div>
+
+          <div class="button-group">
+            <button type="submit" class="auth-button primary">
+              Зарегистрироваться
+            </button>
+            <button
+              type="button"
+              class="auth-button secondary"
+              onclick="showLoginForm()"
+            >
+              На главную
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="register-auth.js"></script>
+  </body>
+</html>

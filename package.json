@@ -1,0 +1,75 @@
+{
+  "name": "airchat",
+  "productName": "AirChat",
+  "version": "1.0.0",
+  "description": "Настольное приложение для общения с голосовым чатом",
+  "main": "src/main.js",
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/yourusername/airchat",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/airchat.git"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.8.1",
+    "@electron-forge/maker-deb": "^7.8.1",
+    "@electron-forge/maker-rpm": "^7.8.1",
+    "@electron-forge/maker-squirrel": "^7.8.1",
+    "@electron-forge/maker-zip": "^7.8.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.8.1",
+    "@electron-forge/plugin-fuses": "^7.8.1",
+    "@electron/fuses": "^1.8.0",
+    "electron": "36.3.2"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "electron-squirrel-startup": "^1.0.1",
+    "sqlite3": "^5.1.7"
+  },
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "build:go": "cd src/go_server && go build -o ../../bin/server.exe . && cd ../go_client && go build -o ../../bin/client.exe .",
+    "build": "npm run build:go && npm run make",
+    "dist": "npm run build:go && npm run package"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "asar": true,
+        "extraResource": [
+          "bin"
+        ],
+        "ignore": [
+          "^\\/src\\/go_client",
+          "^\\/src\\/go_server"
+        ],
+        "prune": true
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "airchat"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
+}
